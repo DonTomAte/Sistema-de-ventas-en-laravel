@@ -83,13 +83,52 @@
                 <div class="title m-b-md">
                     Bienvenido al Proyecto
                 </div>
-
-                <div class="links">
+            <!--
+                <div clas   s="links">
                     <a href="">Documentacion</a>
                     <a href="">Contactanos</a>
                     <a href="">Informacion</a>
                 </div>
+            -->
+
             </div>
         </div>
+
+        <center>
+        <h1>Productos Disponibles</h1>
+        <div class="midiv">    
+        @foreach( $products as $product ) 
+        <div class="midiv">    
+                <h2>{{ $product-> name }}</h2><br>
+                <img src="{{ $product->images ? $product->images()->first()->image : 'no.tiene' }}" alt="Aqui hay una imagen">
+                <p>{{ $product->description}}</p>
+                <td>Bs.  {{ $product->price}}</td>
+        </div>   
+         @endforeach
+    {{ $products->links() }}   
+        </center>
+<!--
+        <table>
+            <th>Nombre</th>
+            <th>Image</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+
+        <h1>Products</h1>
+
+         @foreach( $products as $product ) 
+            <tr>
+                <td>{{ $product-> name }}</td>
+                <td><img src="{{ $product->image }}" alt="Aqui hay una imagen"></td>
+                <td>{{ $product->description}}</td>
+                <td>Bs.  {{ $product->price}}</td>
+            </tr>
+         @endforeach
+        </table>    
+        {{ $products->links() }}    
+        </div>   
+        </center>
+-->
     </body>
 </html>
+
