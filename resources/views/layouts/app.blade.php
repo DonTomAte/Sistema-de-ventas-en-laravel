@@ -9,7 +9,6 @@
 
     <title>        
         Proyecto 281
-
     </title>
     <!--{{ config('app.name', 'Laravel') }} -->
 
@@ -62,7 +61,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if(auth()->user()->admin)
                                         <a class="dropdown-item" href="{{ url('/admin/products') }}">
-                                            {{ __('Gestionar Productos') }}
+                                            {{ __('Ver y Gestionar Productos') }}
                                         </a>
                                         <a class="dropdown-item" href="">
                                             {{ __('Gestiomar Pedidos') }}
@@ -74,7 +73,6 @@
                                             {{ __('Ver Ganancias') }}
                                         </a>
                                     @endif
-
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

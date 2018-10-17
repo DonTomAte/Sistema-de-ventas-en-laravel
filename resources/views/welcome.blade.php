@@ -100,35 +100,19 @@
         @foreach( $products as $product ) 
         <div class="midiv">    
                 <h2>{{ $product-> name }}</h2><br>
-                <img src="{{ $product->images ? $product->images()->first()->image : 'no.tiene' }}" alt="Aqui hay una imagen">
+            <!-- El sig if es para mostrar la imagen del producto-->
+            @if(substr($product->image,0,4)     == "http")
+                <img src="{{ $product->image }}" alt="Aqui hay una imagen" width="250">
+            @else
+                <img src="/images/products/{{ $product->image }}" alt="Aqui hay una imagen" width="250">
+            @endif
+                
                 <p>{{ $product->description}}</p>
                 <td>Bs.  {{ $product->price}}</td>
         </div>   
          @endforeach
     {{ $products->links() }}   
         </center>
-<!--
-        <table>
-            <th>Nombre</th>
-            <th>Image</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
-
-        <h1>Products</h1>
-
-         @foreach( $products as $product ) 
-            <tr>
-                <td>{{ $product-> name }}</td>
-                <td><img src="{{ $product->image }}" alt="Aqui hay una imagen"></td>
-                <td>{{ $product->description}}</td>
-                <td>Bs.  {{ $product->price}}</td>
-            </tr>
-         @endforeach
-        </table>    
-        {{ $products->links() }}    
-        </div>   
-        </center>
--->
     </body>
 </html>
 
