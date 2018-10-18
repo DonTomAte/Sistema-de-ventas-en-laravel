@@ -109,11 +109,15 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         //Eliminar imagenes
-        if (substr($product->image,0,4) !== "http") {
+        if (substr($product->image,0,4) !== 'http') {
             $fullPath =public_path().'/images/products/'.$product->image;
             $deleted = File::delete($fullPath);
+            if ($deleted) {
+                $product->delete();
+            }
         }
-        if ($deleted) {
+        else
+        {
             $product->delete();
         }
         return back();

@@ -1,14 +1,5 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-    </head>
-    <body>
+@extends('layouts.app')
+@section('content')
         <h2>Edit</h2>
 
         <form method="POST" action="{{ url('/admin/products/'.$product->id.'/edit') }}">
@@ -32,6 +23,4 @@
             <button>Guardar Cambios</button>
             <a href="{{ url('/admin/products')}}">Cancelar</a>
         </form>
-    </body>
-</html>
-    
+@endsection

@@ -63,14 +63,14 @@
                                         <a class="dropdown-item" href="{{ url('/admin/products') }}">
                                             {{ __('Ver y Gestionar Productos') }}
                                         </a>
-                                        <a class="dropdown-item" href="">
-                                            {{ __('Gestiomar Pedidos') }}
+                                        <a class="dropdown-item" href="{{ url('/admin/categories') }}">
+                                            {{ __('Ver y Gestionar Categorias') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ url('/admin/providers') }}">
+                                            {{ __('Ver y Gestionar Proveedores') }}
                                         </a>
                                         <a class="dropdown-item" href="">
                                             {{ __('Ver Ventas') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ url('/admin/products') }}">
-                                            {{ __('Ver Ganancias') }}
                                         </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -93,7 +93,9 @@
         </nav>
 
         <main class="py-4">
+            <center>
             @yield('content')
+            </center>
         </main>
     </div>
 </body>

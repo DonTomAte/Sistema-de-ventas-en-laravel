@@ -1,16 +1,5 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    </head>
-    <body>
+@extends('layouts.app')
+@section('content')
         <h2>Crear nuevo producto:</h2>
         <form method="POST" action="{{ url('/admin/products') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -34,5 +23,4 @@
             <input type="text" name="provider_id" value="1"><br>
             <input type="submit" name="">
         </form>
-    </body>
-</html>    
+@endsection
