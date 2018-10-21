@@ -3,24 +3,42 @@
         <h2>Crear nuevo producto:</h2>
         <form method="POST" action="{{ url('/admin/products') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <label>Nombre del Producto</label>
-            <input type="text" name="name"><br>
+            <label>
+                Elija la categoria
+                <select name="category_id">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id}}">
+                        {{ $category->name }}
+                    </option>
+                    @endforeach
+                </select>
+            </label>
+<br>
+            <label>
+                Elija al Proveedor
+                <select name="provider_id">
+                    @foreach($providers as $provider)
+                    <option value="{{ $provider->id}}">
+                        {{ $provider->name }}
+                    </option>
+                    @endforeach
+                </select>
+            </label>
+            <br>
+            <label>Nombre del Producto
+            <input type="text" name="name"></label><br>
             <label>Descripcion</label>
             <input type="text" name="description"><br>
             <label>Precio</label>
             <input type="text" name="price"><br>
-            <label>Stock</label><br>
-            <input type="text" name="stock"><br>
-            <label>Fecha de vencimiento</label><br>
-            <input type="text" name="expiration_date"><br>
+            <label>Stock
+            <input type="text" name="stock"></label><br>
+            <label>F. Venc.
+            <input type="text" name="expiration_date"></label><br>
+            <label>Seleccione una imagen<br>
+            <input type="file" name="image" value="Seleccione una imagen">
+            </label>
             <br>
-            <label>Imagen</label><br>
-            <input type="file" name="image"><br>
-            <br>
-            <label>Categoria (ID)</label><br>
-            <input type="text" name="category_id" value="1"><br>
-            <label>Proveedor (ID)</label><br>
-            <input type="text" name="provider_id" value="1"><br>
             <input type="submit" name="">
         </form>
 @endsection

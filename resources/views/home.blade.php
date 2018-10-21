@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard (Panel de Control)</div>
+                <div class="card-header"><h1>Panel de Control</h1></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,11 +15,15 @@
                         </div>
                     @endif
 
-                    @if (auth()->user()->admin)
-                        <h2>Usted es Admin</h2>
-                    @else
-                        <h2>Usted es Usuario</h2>
-                    @endif
+                    <h2>Registrar Venta</h2>
+                    <table>
+                        <tr>
+                            <th>
+                                
+                            </th>
+                        </tr>
+
+                    </table>
                 </div>
             </div>
         </div>

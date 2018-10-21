@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
+use App\Provider;
 use File;
 class ProductController extends Controller
 {
@@ -15,7 +17,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(5);
-        return view('admin.products.index')->with(compact('products'));
+
+        return view('admin.products.index')->with(compact('products','categories'));
     }
 
     /**
@@ -25,7 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $categories = Category::all();
+        $providers = Provider::all();
+        return view('admin.products.create')->with(compact('categories','providers'));
     }
 
     /**

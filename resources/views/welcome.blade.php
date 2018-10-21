@@ -79,29 +79,21 @@
                 </div>
             @endif
 
-            <div class="content">
                 <div class="title m-b-md">
                     Bienvenido al Proyecto
                 </div>
-            <!--
-                <div clas   s="links">
-                    <a href="">Documentacion</a>
-                    <a href="">Contactanos</a>
-                    <a href="">Informacion</a>
-                </div>
-            -->
 
-            </div>
         </div>
 
-        <center>
+<div class="content">
+
         <h1>Productos Disponibles</h1>
         <div class="midiv">    
         @foreach( $products as $product ) 
         <div class="midiv">    
                 <h2>{{ $product-> name }}</h2><br>
             <!-- El sig if es para mostrar la imagen del producto-->
-            @if(substr($product->image,0,4)     == "http")
+            @if(substr($product->image,0,4)    === 'http')
                 <img src="{{ $product->image }}" alt="Aqui hay una imagen" width="250">
             @else
                 <img src="/images/products/{{ $product->image }}" alt="Aqui hay una imagen" width="250">
@@ -112,7 +104,7 @@
         </div>   
          @endforeach
     {{ $products->links() }}   
-        </center>
+</div>
     </body>
 </html>
 

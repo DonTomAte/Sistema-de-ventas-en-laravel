@@ -40,3 +40,5 @@ Route::post('admin/providers','ProviderController@store');		//registrar
 Route::get('admin/providers/{id}/edit','ProviderController@edit');	//formulario edit
 Route::post('admin/providers/{id}/edit','ProviderController@update');		//registrar
 Route::delete('admin/providers/{id}','ProviderController@destroy');	//eliminar
+
+Route::get('admin/sales','SaleController@index');

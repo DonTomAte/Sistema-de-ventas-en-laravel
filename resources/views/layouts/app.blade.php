@@ -69,7 +69,7 @@
                                         <a class="dropdown-item" href="{{ url('/admin/providers') }}">
                                             {{ __('Ver y Gestionar Proveedores') }}
                                         </a>
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item" href="{{ url('/admin/sales') }}">
                                             {{ __('Ver Ventas') }}
                                         </a>
                                     @endif

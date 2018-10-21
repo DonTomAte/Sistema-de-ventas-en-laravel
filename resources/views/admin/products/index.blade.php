@@ -7,6 +7,7 @@
         <table border="1">
             <tr>
                 <th>Id</th>
+                <th>img</th>
                 <th>Nombre</th>
                 <th>Descripcion</th>
                 <th>Precio</th>
@@ -15,6 +16,14 @@
             @foreach($products as $product)
                 <tr>
                     <td>{{$product->id}}</td>
+
+                    <td>
+                        @if(substr($product->image,0,4)    === 'http')
+                            <img src="{{ $product->image }}" alt="IMG" width="50">
+                        @else
+                            <img src="/images/products/{{ $product->image }}" alt="Aqui hay una imagen" width="50">
+                        @endif
+                    </td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->description}}</td>
                     <td>{{$product->price}}</td>
