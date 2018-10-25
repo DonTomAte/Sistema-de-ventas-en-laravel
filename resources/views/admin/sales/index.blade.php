@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <h1> Ventas</h1>
+<a href="{{ url('admin/sales/store')}}">Registrar nueva venta</a>
     <table border="2">
         <tr>
             <th>operation_id</th>
             <th>tipo</th>
-            <th>Detalles</th>
+            <th>Detalles productos</th>
+            <th>Opciones</th>
         </tr>
         @foreach($sales as $sale)
         <tr>
@@ -35,9 +37,14 @@
                      @endforeach
                 </table>
             </td>
+            <td>
+                <a href="">eliminar</a><br>
+                <a href="">editar</a>
+            </td>
         </tr>
         @endforeach
     </table>
+    {{ $sales->links() }}
     <!--
 
             $table->increments('id');

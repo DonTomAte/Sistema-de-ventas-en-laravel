@@ -42,3 +42,7 @@ Route::post('admin/providers/{id}/edit','ProviderController@update');		//registr
 Route::delete('admin/providers/{id}','ProviderController@destroy');	//eliminar
 
 Route::get('admin/sales','SaleController@index');
+Route::get('admin/sales/create','SaleController@create');
+Route::get('admin/sales/store','SaleController@store');
+Route::get('admin/sales/{id}/edit','SaleController@edit');
+Route::post('admin/sales/{id}/edit','SaleController@update');

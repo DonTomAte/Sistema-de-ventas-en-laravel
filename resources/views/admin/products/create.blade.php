@@ -34,7 +34,7 @@
             <label>Stock
             <input type="text" name="stock"></label><br>
             <label>F. Venc.
-            <input type="text" name="expiration_date"></label><br>
+            <input type="date" name="expiration_date"></label><br>
             <label>Seleccione una imagen<br>
             <input type="file" name="image" value="Seleccione una imagen">
             </label>

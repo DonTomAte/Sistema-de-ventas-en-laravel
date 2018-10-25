@@ -14,16 +14,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <h2>Registrar Venta</h2>
-                    <table>
-                        <tr>
-                            <th>
-                                
-                            </th>
-                        </tr>
-
-                    </table>
+                    @if( auth()->user()->admin)
+                    <h1>Registrar Venta</h1>
+                    <form action="{{ url('/admin/sales/store') }}">
+                        <input type="submit" value="REGISTRAR VENTA">
+                    </form>
+                    @endif
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Operation;
+use App\Product;
 class SaleController extends Controller
 {
     /**
@@ -24,7 +25,9 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+       
+        return view('admin.sales.create')->with(compact('products'));
     }
 
     /**
@@ -33,9 +36,15 @@ class SaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //store se encarga de crear una nueva venta
     public function store(Request $request)
     {
-        //
+        $operation = new Operation();
+        $operation->type = "sale";
+        $operation->save();
+
+        $productos = Product::all();
+        return redirect('admin/sales/'.$operation->id.'/edit');
     }
 
     /**
@@ -57,7 +66,9 @@ class SaleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $operation = Operation::find($id);
+        $productos = Product::all();
+        return view('admin.sales.edit')->with(compact('operation','productos'));
     }
 
     /**
@@ -67,9 +78,12 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //crea un new product
     public function update(Request $request, $id)
     {
-        //
+        $operation = Operation::find($id);
+        $operation->products()->attach($request->input('product_id'),['quantity'=>$request->input('quantity'),'unit_price'=>$request->input('unit_price')]);
+        return redirect('admin/sales/'.$operation->id.'/edit');
     }
 
     /**
