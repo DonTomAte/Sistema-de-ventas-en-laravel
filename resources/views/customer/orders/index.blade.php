@@ -1,16 +1,18 @@
 @extends('layouts.app')
 @section('content')
 <h1> Ventas</h1>
-<form method="POST" action="{{ url('admin/sales/store')}}">
+<form method="POST" action="{{ url('customer/orders/store')}}">
     {{ csrf_field() }}
     <input type="hidden" name="user_id" value="{{ auth()->user()->id}}">
-    <input class="btn btn-primary" type="submit" value="Registrar nueva venta yeah">
+    <input class="btn btn-primary" type="submit" value="Registrar nuevo Pedido">
 </form>
-<br>
-    @if( $sales->count() === 0)
+
+    @if( $orders->count() === 0)
         <br>
         <br>
-        <h3>No hay ventas</h3>
+        <h3>No hay pedidos</h3>
+        <h2>{{ $orders->count() }} Pedidos</h2>
+        <h2>{{ auth()->user()->id }} <-User id</h2>
     @else
     <div class="container">
         <table class="table">
@@ -22,12 +24,12 @@
                     <th>Opciones</th>
                 </tr>
             </thead>
-            @foreach($sales as $sale)
+            @foreach($orders as $order)
             <tr>
-                <td> {{ $sale->id }} </td>
-                <td> {{ $sale->type }} </td>
+                <td> {{ $order->id }} </td>
+                <td> {{ $order->type }} </td>
                 <td>
-                    @if($sale->products->count() === 0)
+                    @if($order->products->count() === 0)
                     <center><h4>No hay productos en esta factura</h4></center>                      
                     @else
                     <center>
@@ -39,7 +41,7 @@
                                 <th>Fecha</th>
                                 <th>Hora</th>
                             </TR>
-                             @foreach($sale->products as $product)
+                             @foreach($order->products as $product)
                                 <TR>
                                     <td> {{ $product->name }} </td>
                                     <td> {{ $product->pivot->quantity }} </td>
@@ -53,17 +55,17 @@
                     @endif
                 </td>
                 <td>
-                    <form method="post" action="{{ url('/admin/sales/'.$sale->id) }}">
+                    <form method="post" action="{{ url('/admin/orders/'.$order->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('DELETE')}}
                         <button class="btn btn-danger" type="submit" onclick="return confirm('¿Esta seguro que quiere eliminar esta factura?')">Eliminar Factura</button>
                     </form>
-                    <a class="btn btn-secondary" href="{{ url( 'admin/sales/'. $sale->id .'/edit' )}}" type="button">editar</a>
+                    <a class="btn btn-secondary" href="{{ url( 'admin/orders/'. $order->id .'/edit' )}}" type="button">editar</a>
                 </td>
             </tr>
             @endforeach
         </table>
-        {{ $sales->links() }}
+        {{ $orders->links() }}
     </div>
     @endif
 @endsection

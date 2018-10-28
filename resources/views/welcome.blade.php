@@ -84,8 +84,14 @@
                 </div>
 
         </div>
+        <!-- Aqui esta el buscador-->
+        <div class="content">
+            <form method="GET" action="{{ url('search/') }}">
+                <input type="text" placeholder="Buscar Producto" name="consulta">
+                <input type="submit" name="" value="buscar">
+            </form>
+         </div>
 
-<div class="content">
 
         <h1>Productos Disponibles</h1>
         <div class="midiv">    

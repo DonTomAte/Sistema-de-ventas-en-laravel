@@ -16,6 +16,6 @@ class Product extends Model
     	return $this->belongsTo(Warehouse::class);
     }
     public function operations(){
-    	return $this->belongsToMany(Operation::class)->withPivot('quantity','unit_price')->withTimestamps();
+    	return $this->belongsToMany(Operation::class)->withPivot('id','quantity','unit_price')->withTimestamps();
     }
 }

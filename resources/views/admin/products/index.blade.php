@@ -4,16 +4,20 @@
 @section('content')
 <center>
         <a href="{{ url('/admin/products/create') }}">Crear Producto</a>
-        <table border="1">
-            <tr>
-                <th>Id</th>
-                <th>img</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-                <th>Opciones</th>
-            </tr>
-            @foreach($products as $product)
+        <div class="container">
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                    <th>Id</th>
+                    <th>img</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Opciones</th> 
+                </tr>
+              </thead>
+              <tbody>
+                 @foreach($products as $product)
                 <tr>
                     <td>{{$product->id}}</td>
 
@@ -38,12 +42,13 @@
 
                             <button type="submit">Eliminar</button>
                         </form>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
-
-        {{ $products->links() }}
+                        </td>
+                    </tr>
+                  </tbody>
+                      @endforeach
+                </table>
+            {{ $products->links() }}
+            </div>
         </center>
 @endsection
 

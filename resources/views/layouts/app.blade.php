@@ -26,7 +26,13 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                @if(auth()->user())
+                    @if(auth()->user()->admin)
+                        <a class="navbar-brand" href="{{ url('/home') }}">
+                    @else
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                    @endif
+                @endif
                    <!--{{ config('app.name', 'Laravel') }} --> 
                    Proyecto 281 
                 </a>

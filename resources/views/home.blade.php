@@ -6,7 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"><h1>Panel de Control</h1></div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -15,11 +14,17 @@
                         </div>
                     @endif
                     @if( auth()->user()->admin)
-                    <h1>Registrar Venta</h1>
-                    <form action="{{ url('/admin/sales/store') }}">
-                        <input type="submit" value="REGISTRAR VENTA">
-                    </form>
+                        <form method="POST" action="{{ url('admin/sales/store')}}">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="user_id" value="{{ auth()->user()->id}}">
+                            <input class="btn btn-primary btn-lg" type="submit" value="Registrar nueva venta">
+                        </form>
+                    @else
+                        <h2>Realizar pedido</h2>
+                        <a href=" {{ url( '/customer/orders' )}} ">Mi pedido</a>
                     @endif
+
+
                 </div>
             </div>
         </div>

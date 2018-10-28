@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>Agregar Producto</h2> 
+<h2>Agregar Producto al Carrito de Conmpras</h2> 
   <!-- Aqui enviamos al mismo link pero por el verbo POST -->
   <form method="POST" action=" {{ url('/admin/details/'.$operation->id.'/edit') }} ">
     {{ csrf_field() }}
@@ -62,7 +62,7 @@
     {{ csrf_field() }}
     {{ method_field('DELETE')}}
     <br>
-    <button class="btn btn-danger" type="submit" onclick="return confirm('¿Esta seguro que quiere eliminar esta factura?')">Eliminar Factura</button>
+    <button class="btn btn-danger" type="submit" onclick="return confirm('¿Esta seguro que quiere eliminar esta compra?')">Eliminar Carrito</button>
 </form>
-<a class="btn btn-primary btn-lg" href="{{ url('/admin/sales') }}" type="button">Finalizar</a>
+<a class="btn btn-primary btn-lg" href="{{ url('/customer/orders') }}" type="button">Finalizar</a>
 @endsection
