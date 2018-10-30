@@ -40,16 +40,20 @@ Route::post('admin/providers','ProviderController@store');		//registrar
 Route::get('admin/providers/{id}/edit','ProviderController@edit');	//formulario edit
 Route::post('admin/providers/{id}/edit','ProviderController@update');		//registrar
 Route::delete('admin/providers/{id}','ProviderController@destroy');	//eliminar
+//Detail Product
+Route::post('admin/details/{id}/edit','DetailController@store');			//crea un producto-detalle
+Route::delete('admin/details/{id}/{id_prod}','DetailController@destroy');	//elimina un producto-detalle
 //Operation Sale
 Route::get('admin/sales','SaleController@index');			//muestra todas las ventas
 Route::post('admin/sales/store','SaleController@store');		//registra una "factura"
 Route::get('admin/sales/{id}/edit','SaleController@edit');	//Me envia a la factura para llenar de productos
 Route::delete('admin/sales/{id}','SaleController@destroy');	//elimina una factura
-//Detail Product
-Route::post('admin/details/{id}/edit','DetailController@store');			//crea un producto-detalle
-Route::delete('admin/details/{id}/{id_prod}','DetailController@destroy');	//elimina un producto-detalle
-
+//Operation Purchase
+Route::get('admin/purchases','PurchaseController@index');
+Route::post('admin/purchases/store','PurchaseController@store');		//registra una "compra"
+Route::get('admin/purchases/{id}/edit','PurchaseController@edit');
 //Operation Order
 Route::get('customer/orders','OrderController@index');			//muestra todas las ordenes
 Route::post('customer/orders/store','OrderController@store');	
 Route::get('customer/orders/{id}/edit','OrderController@edit');		//registra una nueva orden
+Route::delete('customer/orders/{id}','OrderController@destroy');	//elimina una pedido

@@ -78,6 +78,9 @@
                                         <a class="dropdown-item" href="{{ url('/admin/sales') }}">
                                             {{ __('Ver Ventas') }}
                                         </a>
+                                        <a class="dropdown-item" href="{{ url('/admin/purchases') }}">
+                                            {{ __('Ver mis compras') }}
+                                        </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

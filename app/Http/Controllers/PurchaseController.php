@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Operation;
 use App\Product;
-class OrderController extends Controller
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Operation::where('user_id',auth()->user()->id)->whereIn("type",["order"])->paginate(6);
-        return view('customer.orders.index')->with(compact('orders'));
+        $purchases = Operation::where("type","=","buy")->paginate(5);
+        return view('admin.purchases.index')->with(compact('purchases'));
     }
 
     /**
@@ -37,12 +37,12 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $operation = new Operation();
-        $operation->type = "order";
+        $operation->type = "buy";
         $operation->user_id = $request->input('user_id');
         $operation->save();
 
         $productos = Product::all();
-        return redirect('customer/orders/'.$operation->id.'/edit');
+        return redirect('admin/purchases/'.$operation->id.'/edit');
     }
 
     /**
@@ -66,7 +66,7 @@ class OrderController extends Controller
     {
         $operation = Operation::find($id);
         $productos = Product::all();
-        return view('customer.orders.edit')->with(compact('operation','productos'));
+        return view('admin.purchases.edit')->with(compact('operation','productos'));
     }
 
     /**
@@ -89,12 +89,6 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $order = Operation::find($id);
-        foreach($order->products as $product){
-            $prod_id=$product->id;
-            $order->products()->detach($prod_id);
-        }
-        $order->delete();
-        return redirect('customer/orders');
+        //
     }
 }
