@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductCreateRequest;
 use App\Product;
 use App\Category;
 use App\Provider;
@@ -39,7 +40,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductCreateRequest $request)
     {
         $product = new Product();
         $product->name = $request->input('name');
@@ -48,11 +49,17 @@ class ProductController extends Controller
         $product->stock = $request->input('stock');
         $product->expiration_date = $request->input('expiration_date');
         //para guardar la imagen:
-        $file = $request->file('image');
-        $path = public_path().'/images/products';
-        $fileName = uniqid().$file->getClientOriginalName();
-        $file->move($path,$fileName);
-        $product->image = $fileName;
+        if ($request->file('image') === null) {
+
+        }
+        else{
+            $file = $request->file('image');
+            $path = public_path().'/images/products';
+            $fileName = uniqid().$file->getClientOriginalName();
+            $file->move($path,$fileName);
+            $product->image = $fileName;
+        }
+
         $product->category_id = $request->input('category_id');
         $product->provider_id = $request->input('provider_id');
         
@@ -80,7 +87,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('admin.products.edit')->with(compact('product'));    
+        $categories = Category::all();
+        $providers = Provider::all();
+        return view('admin.products.edit')->with(compact('product','categories','providers'));    
     }
 
     /**
@@ -90,7 +99,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
+    public function update(ProductCreateRequest $request, $id){
         $product = Product::find($id);
         $product->name = $request->input('name');
         $product->description = $request->input('description');
@@ -99,7 +108,20 @@ class ProductController extends Controller
         $product->expiration_date = $request->input('expiration_date');
         $product->category_id = $request->input('category_id');
         $product->provider_id = $request->input('provider_id');
-        $product->image = "es_una_imagen";
+        //para editar la imagen:
+        if ($request->file('image') != null) {
+            if ($product->image !== null) {
+                //eliminamos la imagen anterior
+                $fullPath =public_path().'/images/products/'.$product->image;
+                $deleted = File::delete($fullPath);
+            }
+                //asignamos la nueva imagen
+                $file = $request->file('image');
+                $path = public_path().'/images/products';
+                $fileName = uniqid().$file->getClientOriginalName();
+                $file->move($path,$fileName);
+                $product->image = $fileName;                
+        }
         $product->save();
         return redirect('/admin/products');
     }
@@ -114,7 +136,10 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         //Eliminar imagenes
-        if (substr($product->image,0,4) !== 'http') {
+        if ($product->image === null) {
+            $product->delete();
+        }
+        elseif (substr($product->image,0,4) !== 'http') {
             $fullPath =public_path().'/images/products/'.$product->image;
             $deleted = File::delete($fullPath);
             if ($deleted) {
