@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h2>Agregar Producto</h2> 
+@include('admin.messages')
   <!-- Aqui enviamos al mismo link pero por el verbo POST -->
   <form method="POST" action=" {{ url('/admin/details/'.$operation->id.'/edit') }} ">
     {{ csrf_field() }}
@@ -16,11 +17,11 @@
     </label>
     <label>
       Cantidad
-      <input type="text" name="quantity">
+      <input type="text" name="quantity" value="{{old('quantity')}}" required>
     </label>
     <label>
       Precio Unitario
-      <input type="text" name="unit_price">
+      <input type="text" name="unit_price" value="{{old('unit_price')}}" required autofocus>
     </label>
    <button type="submit">Agregar</button>
   </form>

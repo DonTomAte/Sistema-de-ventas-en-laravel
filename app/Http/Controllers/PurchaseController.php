@@ -38,7 +38,7 @@ class PurchaseController extends Controller
     {
         $operation = new Operation();
         $operation->type = "buy";
-        $operation->user_id = $request->input('user_id');
+        $operation->user_id = auth()->user()->id;
         $operation->save();
 
         $productos = Product::all();

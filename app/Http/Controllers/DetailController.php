@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\OperationProductRequest;
+
 use App\Operation;
 class DetailController extends Controller
 {
     //crea un new product en la operacion $id
-    public function store(Request $request, $id)
+    public function store(OperationProductRequest $request, $id)
     {
         $operation = Operation::find($id);
         $operation->products()->attach($request->input('product_id'),['quantity'=>$request->input('quantity'),'unit_price'=>$request->input('unit_price')]);

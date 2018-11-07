@@ -3,7 +3,6 @@
 <h1> Ventas</h1>
 <form method="POST" action="{{ url('customer/orders/store')}}">
     {{ csrf_field() }}
-    <input type="hidden" name="user_id" value="{{ auth()->user()->id}}">
     <input class="btn btn-primary" type="submit" value="Registrar nuevo Pedido">
 </form>
 
@@ -12,7 +11,6 @@
         <br>
         <h3>No hay pedidos</h3>
         <h2>{{ $orders->count() }} Pedidos</h2>
-        <h2>{{ auth()->user()->id }} <-User id</h2>
     @else
     <div class="container">
         <table class="table">
@@ -30,7 +28,7 @@
                 <td> {{ $order->type }} </td>
                 <td>
                     @if($order->products->count() === 0)
-                    <center><h4>No hay productos en esta factura</h4></center>                      
+                    <center><h4>No hay productos en este carrito</h4></center>                      
                     @else
                     <center>
                         <table >

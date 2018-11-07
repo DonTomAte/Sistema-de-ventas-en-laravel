@@ -2,7 +2,7 @@
 @section('content')
     <center>
         <a href="{{ url('/admin/categories/create') }}">Crear Categoria</a>
-        <table border="1">
+        <table class="table">
             <tr>
                 <th>Nombre</th>
                 <th>Descripcion</th>

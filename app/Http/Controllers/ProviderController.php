@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProviderRequest;
 use App\Provider;
 class ProviderController extends Controller
 {
@@ -33,7 +34,7 @@ class ProviderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProviderRequest $request)
     {
         $provider = new Provider();
         $provider->name=$request->input('name');
@@ -73,7 +74,7 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProviderRequest $request, $id)
     {
         $provider = Provider::find($id);
         $provider->name=$request->input('name');

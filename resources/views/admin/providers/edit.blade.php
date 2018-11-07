@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
         <h2>Edit</h2>
-
+@include('admin.messages')
         <form method="POST" action="{{ url('/admin/providers/'.$provider->id.'/edit') }}">
             {{ csrf_field() }}
             <label>Nombre del Proveedor</label>
-            <input type="text" name="name" value="{{ $provider->name  }}"><br>
+            <input type="text" name="name" value="{{$provider->name}}" required><br>
             <label>Telefono/Celular</label>
             <input type="text" name="phone" value="{{ $provider->phone  }}"><br>
             <label>Direccion</label>

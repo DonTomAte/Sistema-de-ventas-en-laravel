@@ -32,14 +32,14 @@ class ProductCreateRequest extends FormRequest
     public function messages(){
         return [
             'name.required' => 'El :attribute es obligatorio',
-            'name.max:20' => 'El :attribute es muy largo',
+            'name.max' => 'El :attribute es muy largo',
 
             'price.required' => 'El :attribute es obligatorio',
             'price.numeric' => 'El :attribute debe ser un numero',
-            'price.min:0' => 'El :attribute debe ser mayor que 0',
+            'price.min' => 'El :attribute debe ser mayor que 0',
 
             'stock.required' => 'El :attribute es obligatorio',
-            'stock.min:0' => 'El :attribute debe ser mayor que 0',
+            'stock.min' => 'El :attribute debe ser minimo 0',
             'stock.integer' => 'El :attribute debe ser un numero entero',
         ];
     }
