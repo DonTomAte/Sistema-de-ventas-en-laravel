@@ -79,7 +79,7 @@
                                             {{ __('Ver Ventas') }}
                                         </a>
                                         <a class="dropdown-item" href="{{ url('/admin/purchases') }}">
-                                            {{ __('Ver mis compras') }}
+                                            {{ __('Ver mis compras (pedidos al proveedor)') }}
                                         </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"

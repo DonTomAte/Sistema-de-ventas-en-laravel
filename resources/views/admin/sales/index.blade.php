@@ -28,31 +28,14 @@
                 <td> {{ $sale->type }} </td>
                 <td>
                     @if($sale->products->count() === 0)
-                    <center><h4>No hay productos en esta factura</h4></center>                      
+                        <center><h4>No hay productos en esta factura</h4></center>                      
                     @else
-                    <center>
-                        <table >
-                            <TR>
-                                <th>Product_name</th>
-                                <th>Cantidad</th>
-                                <th>Precio</th>
-                                <th>Fecha</th>
-                                <th>Hora</th>
-                            </TR>
-                             @foreach($sale->products as $product)
-                                <TR>
-                                    <td> {{ $product->name }} </td>
-                                    <td> {{ $product->pivot->quantity }} </td>
-                                    <td> {{ $product->pivot->unit_price }} </td>
-                                    <td> {{ substr($product->pivot->created_at,0,11 )}} </td>
-                                    <td> {{ substr($product->pivot->created_at,11,20 )}} </td>
-                                </TR>
-                             @endforeach
-                        </table>
-                    </center>
                     @endif
                 </td>
                 <td>
+                     <form action="{{ url('details/'.$sale->id.'/list') }}">
+                            <button class="btn btn-primary">Ver Detalles</button>
+                        </form>
                     <form method="post" action="{{ url('/admin/sales/'.$sale->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('DELETE')}}

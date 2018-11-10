@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
         <h2>Crear nueva categoria:</h2>
-@include('admin.messages')
+@include('messages')
         <form method="POST" action="{{ url('/admin/categories') }}">
             {{ csrf_field() }}
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
         <h2>Crear nuevo producto:</h2>
-@include('admin.messages')
+@include('messages')
         <form method="POST" action="{{ url('/admin/products') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <label>

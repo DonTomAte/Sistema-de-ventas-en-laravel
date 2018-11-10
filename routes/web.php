@@ -43,6 +43,7 @@ Route::delete('admin/providers/{id}','ProviderController@destroy');	//eliminar
 //Detail Product
 Route::post('admin/details/{id}/edit','DetailController@store');			//crea un producto-detalle
 Route::delete('admin/details/{id}/{id_prod}','DetailController@destroy');	//elimina un producto-detalle
+Route::get('details/{id}/list', 'DetailController@index');
 //Operation Sale
 Route::get('admin/sales','SaleController@index');			//muestra todas las ventas
 Route::post('admin/sales/store','SaleController@store');		//registra una "factura"

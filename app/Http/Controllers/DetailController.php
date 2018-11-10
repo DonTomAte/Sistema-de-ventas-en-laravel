@@ -8,6 +8,12 @@ use App\Http\Requests\OperationProductRequest;
 use App\Operation;
 class DetailController extends Controller
 {
+    //muestra los productos de una operacion a partir de su id
+    public function index($id){
+        $operation = Operation::find($id);
+        $listProducts = $operation->products;
+        return view('detailOperation')->with(compact('listProducts'));
+    }
     //crea un new product en la operacion $id
     public function store(OperationProductRequest $request, $id)
     {

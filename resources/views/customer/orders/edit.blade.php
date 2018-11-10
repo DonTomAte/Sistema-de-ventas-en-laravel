@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h2>Agregar Producto al Carrito de Conmpras</h2> 
-@include('admin.messages')
+@include('messages')
   <!-- Aqui enviamos al mismo link pero por el verbo POST -->
   <form method="POST" action=" {{ url('/admin/details/'.$operation->id.'/edit') }} ">
     {{ csrf_field() }}

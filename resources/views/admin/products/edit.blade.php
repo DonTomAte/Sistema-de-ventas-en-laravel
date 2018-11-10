@@ -2,7 +2,7 @@
 @section('content')
         <h2>Edit</h2>
 
-@include('admin.messages')
+@include('messages')
         <form method="POST" action="{{ url('/admin/products/'.$product->id.'/edit') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <label>Nombre del Producto</label>

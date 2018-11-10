@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
         <h2>Edit</h2>
-@include('admin.messages')
+@include('messages')
         <form method="POST" action="{{ url('/admin/categories/'.$category->id.'/edit') }}">
             {{ csrf_field() }}
             <label>Nombre del Producto</label>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
         <h2>Crear nuevo proveedor:</h2>
-@include('admin.messages')
+@include('messages')
         <form method="POST" action="{{ url('/admin/providers') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <label>Nombre del Proveedor
